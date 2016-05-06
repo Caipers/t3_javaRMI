@@ -18,15 +18,15 @@ public class tickets {
     private String endDate;
     private int numberOfPeople;
     private int age[];
-    private int cardNumber;
-    private String dateValid;
-    private int secretNumber;
+    //private int cardNumber;
+    //private String dateValid;
+    //private int secretNumber;
+    private credicard card;
     private int parts;
     
     public tickets(int code, int type, String from, 
                    String departure, String beginDate, String endDate, 
-                   int numberOfPeople, int age[], int cardNumber,
-                   String dateValid, int secretNumber, int parts) {
+                   int numberOfPeople, int age[], credicard card, int parts) {
         this.code = code;
         this.type = type;
         this.from = from;
@@ -35,9 +35,10 @@ public class tickets {
         this.endDate = endDate;
         this.numberOfPeople = numberOfPeople;
         this.age = age;
-        this.cardNumber = cardNumber;
-        this.dateValid = dateValid;
-        this.secretNumber = secretNumber;
+        //this.cardNumber = cardNumber;
+        //this.dateValid = dateValid;
+        //this.secretNumber = secretNumber;
+        this.card = card;
         this.parts = parts;
     }
 }

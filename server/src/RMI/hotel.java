@@ -20,7 +20,6 @@ public class hotel {
     private String city;
     private int roomCapacity;
     private float price;
-    
     private int roomAvailable;
     
     public hotel(String name, String city, int roomCapacity, float price) {
@@ -55,5 +54,25 @@ public class hotel {
     
     public void setPrice(float price) {
         this.price = price;
+    }
+    
+    public String getName() {
+        return name;
+    }
+    
+    public String getCity() {
+        return city;
+    }
+    
+    public int getRoomCapacity() {
+        return roomCapacity;
+    }
+    
+    public int getRoomAvailable() {
+        return roomAvailable;
+    }
+    
+    public float getPrice() {
+        return price;
     }
 }

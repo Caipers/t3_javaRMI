@@ -50,17 +50,23 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
     @Override
     public void buyAirTickets(InterCli interCli, int code, int type, String from, 
                               String departure, String beginDate, String endDate, 
-                              int numberOfPeople, int age[], int cardNumber,
-                              String dateValid, int secretNumber, int parts) throws RemoteException {
+                              int numberOfPeople, int age[],
+                              credicard card, int parts) throws RemoteException {
         
         tickets tick = new tickets(code, type, from, departure,
                                  beginDate, endDate, numberOfPeople,
-                                 age, cardNumber, dateValid, 
-                                 secretNumber, parts);
+                                 age, card, parts);
+        
         listOfTickets.add(tick);
         interCli.echo("Ticket has been processed");
+    }
+    
+    public void buyAccommodation(InterCli interCli, String destination,
+                                String beginDate, String endDate, int numberPerson,
+                                int age[], credicard card, int parts) 
+                                throws RemoteException {
         
-        
+        interCli.echo("buyAccommodation has been processed");
         
     }
 }

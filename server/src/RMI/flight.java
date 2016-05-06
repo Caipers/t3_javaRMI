@@ -25,6 +25,14 @@ public class flight {
         this.price       = price;
     }
     
+    public void setFrom(String from) {
+        this.from = from;
+    }
+    
+    public void setDestination(String destination) {
+        this.destination = destination;
+    }
+    
     public void setPrice(float price) {
         this.price = price;
     }

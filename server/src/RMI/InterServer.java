@@ -45,9 +45,13 @@ public interface InterServer extends Remote {
     public void queryAirTickets(InterCli interCli) throws RemoteException;
     public void buyAirTickets(InterCli interCli, int code, int type, String from, 
                               String departure, String beginDate, String endDate, 
-                              int numberOfPeople, int age[], int cardNumber,
-                              String dateValid, int secretNumber, int parts)
-                              throws RemoteException;
+                              int numberOfPeople, int age[], credicard card, 
+                              int parts) throws RemoteException;
+    public void buyAccommodation(InterCli interCli, String destination,
+                                String beginDate, String endDate, int numberPerson,
+                                int age[], credicard card, int parts) 
+                                throws RemoteException;
+    
     
     
 }

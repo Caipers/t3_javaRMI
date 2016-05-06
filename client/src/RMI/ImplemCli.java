@@ -40,6 +40,8 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                 System.out.println("Press:");
                 System.out.println("[1] to query Air Tickets");
                 System.out.println("[2] to buy Air Tickets");
+                System.out.println("[3] to query Hotel accommodation");
+                System.out.println("[4] to buy Hotel accommodation");
                 cmd = in.nextLine().trim();
                 
                 switch (cmd) {
@@ -59,6 +61,8 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         int parts;
                         String dateValid;
                         int secretNumber;
+                        int age[];
+                        credicard card;
                         
                         System.out.println("List of flights:");
                         IF.queryAirTickets(this);
@@ -90,7 +94,7 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         System.out.println("Inform the number of tickets:");
                         numberPerson = Integer.parseInt(in.nextLine().trim());
                         
-                        int age[] = new int[numberPerson];
+                        age = new int[numberPerson];
                         for(int i = 0; i < numberPerson; i++) {
                             System.out.println("Inform the age of client #" + i);
                             age[i] = Integer.parseInt(in.nextLine().trim());
@@ -109,11 +113,63 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         System.out.println("Inform how many months of paying:");
                         parts = Integer.parseInt(in.nextLine().trim());
                         
+                        card = new credicard(cardNumber, dateValid, secretNumber);
+                        
                         IF.buyAirTickets(this, code, type, from, destination,
                                            beginDate, endDate, numberPerson,
-                                           age, cardNumber, dateValid, 
-                                           secretNumber, parts);
+                                           age, card, parts);
                         
+                        System.out.println("Do you wish to buy Accommodations? Y/N");
+                        String acc = in.nextLine().trim();
+                        
+                        if (acc.equals("Y")) {
+                            // TODO
+                            // buy accommodation
+                        }
+                        break;
+                    case "3":
+                        System.out.println("Inform destination (Hotel or City)");
+                        destination = in.nextLine().trim();
+                        
+                        System.out.println("Start date:");
+                        beginDate = in.nextLine().trim();
+                        
+                        System.out.println("Final date:");
+                        endDate = in.nextLine().trim();
+                        
+                        System.out.println("Inform number of people:");
+                        numberPerson = Integer.parseInt(in.nextLine().trim());
+                        
+                        age = new int[numberPerson];
+                        for(int i = 0; i < numberPerson; i++) {
+                            System.out.println("Inform the age of client #" + i);
+                            age[i] = Integer.parseInt(in.nextLine().trim());
+                        }
+                        
+                        System.out.println("Inform the credicard information:");
+                        System.out.println("Credicard number:");
+                        cardNumber = Integer.parseInt(in.nextLine().trim());
+                        
+                        System.out.println("Validity:");
+                        dateValid = in.nextLine().trim();
+                        
+                        System.out.println("Inform the secret number:");
+                        secretNumber = Integer.parseInt(in.nextLine().trim());
+                        
+                        System.out.println("Inform how many months of paying:");
+                        parts = Integer.parseInt(in.nextLine().trim());
+                        
+                        card = new credicard(cardNumber, dateValid, secretNumber);
+                        
+                        IF.buyAccommodation(this, destination,
+                                           beginDate, endDate, numberPerson,
+                                           age, card, parts);
+                        
+                        break;
+                        
+                    case "4":
+                        
+                        break;
                         
                         
                         
