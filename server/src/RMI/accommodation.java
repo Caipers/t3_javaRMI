@@ -13,14 +13,14 @@ public class accommodation {
     private hotel Hotel;
     private String beginDate;
     private String endDate;
-    private String rooms;
+    private int rooms;
     private int age[];
     private credicard card;
     private int parts;
     
     
     public accommodation(hotel Hotel, String beginDate, String endDate, 
-                         String rooms, String number, int age[], credicard card,
+                         int rooms, int age[], credicard card,
                          int parts) {
         this.Hotel = Hotel;
         this.beginDate = beginDate;
@@ -31,5 +31,23 @@ public class accommodation {
         this.parts = parts;
     }
     
-    
+    public String toStr() {
+        String aux;
+        
+        aux = "Hotel's name: " + Hotel.getName() + 
+              " Begin Date: " + beginDate +
+              " End Date: " + endDate +
+              " Ages: [ ";
+                
+            for(int i = 0; i < rooms; i++) {
+                aux += age[i];
+                aux += " ";
+            }
+            aux += "]";
+            
+            aux += " Card Number: " + card.getNumber() +
+                   " Parts: " + parts;
+            
+        return aux;
+    }
 }

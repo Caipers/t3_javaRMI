@@ -5,6 +5,8 @@
  */
 package RMI;
 
+import java.io.Serializable;
+
 /**
  *
  * @author root
@@ -13,7 +15,7 @@ package RMI;
  *        Constructor: (Numero Cartao, Bandeira, Emissao Cartao, Vencimento
  *                     Cartao, Valor Verificador)
  */
-public class credicard {
+public class credicard implements Serializable {
     private int number;
     //private String issuer;
     //private String dateBegin;

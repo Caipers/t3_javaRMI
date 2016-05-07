@@ -18,9 +18,6 @@ public class tickets {
     private String endDate;
     private int numberOfPeople;
     private int age[];
-    //private int cardNumber;
-    //private String dateValid;
-    //private int secretNumber;
     private credicard card;
     private int parts;
     
@@ -35,9 +32,6 @@ public class tickets {
         this.endDate = endDate;
         this.numberOfPeople = numberOfPeople;
         this.age = age;
-        //this.cardNumber = cardNumber;
-        //this.dateValid = dateValid;
-        //this.secretNumber = secretNumber;
         this.card = card;
         this.parts = parts;
     }
@@ -51,14 +45,14 @@ public class tickets {
                " Begin Date: " + beginDate + 
                " End Date: " + endDate + 
                " Number of People: " + numberOfPeople +
-               " Ages: ";
+               " Ages: [ ";
         for(int i = 0; i < numberOfPeople; i++) {
             aux += age[i] + " ";
         }
+        aux += "]";
         
-        aux += "Card: " + card.getNumber() + 
-               "Parts: " + parts;
-        
+        aux += " Card: " + card.getNumber() + 
+               " Parts: " + parts;
         return aux;
     }
 }

@@ -37,6 +37,7 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
             */
             String cmd;
             while (true) {
+                System.out.println("");
                 System.out.println("Press:");
                 System.out.println("[1] to query Air Tickets");
                 System.out.println("[2] to buy Air Tickets");
@@ -73,7 +74,7 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         System.out.println("Press 1 to One-Way Ticket or " + 
                                            "2 to Two-Way Ticket");
                         type = Integer.parseInt(in.nextLine().trim());
-                        System.out.println(""+type);
+//                        System.out.println(""+type);
 //                        if ((type != 1) || (type != 2)) {
 //                            System.out.println("Invalid type of ticket!");
 //                            break;
@@ -113,19 +114,20 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         System.out.println("Inform how many months of paying:");
                         parts = Integer.parseInt(in.nextLine().trim());
                         
-                        card = new credicard(cardNumber, dateValid, secretNumber);
+                        //card = new credicard(cardNumber, dateValid, secretNumber);
                         
                         IF.buyAirTickets(this, code, type, from, destination,
                                            beginDate, endDate, numberPerson,
-                                           age, card, parts);
+                                           age, cardNumber, dateValid, 
+                                           secretNumber, parts);
                         
-                        System.out.println("Do you wish to buy Accommodations? Y/N");
-                        String acc = in.nextLine().trim();
-                        
-                        if (acc.equals("Y")) {
-                            // TODO
-                            // buy accommodation
-                        }
+//                        System.out.println("Do you wish to buy Accommodations? Y/N");
+//                        String acc = in.nextLine().trim();
+//                        
+//                        if (acc.equals("Y")) {
+//                            // TODO
+//                            // buy accommodation
+//                        }
                         break;
                     case "3":
                         IF.queryAccommodation(this);
@@ -133,6 +135,12 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         break;
                         
                     case "4":
+                        System.out.println("List of Hotels:");
+                        IF.queryAccommodation(this);
+                        
+                        System.out.println("Please press the code of the Hotel:");
+                        code = Integer.parseInt(in.nextLine().trim());
+                        
                         System.out.println("Inform destination (Hotel or City)");
                         destination = in.nextLine().trim();
                         
@@ -142,7 +150,7 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         System.out.println("Final date:");
                         endDate = in.nextLine().trim();
                         
-                        System.out.println("Inform number of people:");
+                        System.out.println("Inform number of rooms:");
                         numberPerson = Integer.parseInt(in.nextLine().trim());
                         
                         age = new int[numberPerson];
@@ -164,11 +172,12 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         System.out.println("Inform how many months of paying:");
                         parts = Integer.parseInt(in.nextLine().trim());
                         
-                        card = new credicard(cardNumber, dateValid, secretNumber);
+                        //card = new credicard(cardNumber, dateValid, secretNumber);
                         
-                        IF.buyAccommodation(this, destination,
+                        IF.buyAccommodation(this, code, destination,
                                            beginDate, endDate, numberPerson,
-                                           age, card, parts);
+                                           age, cardNumber, dateValid, 
+                                           secretNumber, parts);
                         
                         break;
                     
