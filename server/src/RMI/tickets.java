@@ -41,4 +41,24 @@ public class tickets {
         this.card = card;
         this.parts = parts;
     }
+    
+    public String toStr() {
+        String aux;
+        aux =  "Code: " + code + 
+               " Type: " + type + 
+               " From: " + from + 
+               " Departure: " + depature + 
+               " Begin Date: " + beginDate + 
+               " End Date: " + endDate + 
+               " Number of People: " + numberOfPeople +
+               " Ages: ";
+        for(int i = 0; i < numberOfPeople; i++) {
+            aux += age[i] + " ";
+        }
+        
+        aux += "Card: " + card.getNumber() + 
+               "Parts: " + parts;
+        
+        return aux;
+    }
 }

@@ -128,6 +128,11 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         }
                         break;
                     case "3":
+                        IF.queryAccommodation(this);
+                        
+                        break;
+                        
+                    case "4":
                         System.out.println("Inform destination (Hotel or City)");
                         destination = in.nextLine().trim();
                         
@@ -166,15 +171,7 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                                            age, card, parts);
                         
                         break;
-                        
-                    case "4":
-                        
-                        break;
-                        
-                        
-                        
-                        
-                        
+                    
                 }
                 
             }

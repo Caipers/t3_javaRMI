@@ -15,24 +15,22 @@ import java.util.Iterator;
  * @author samuel
  */
 public class ImplemServer extends UnicastRemoteObject implements InterServer {
-    ArrayList<flight> listOfFlight;
+    ArrayList<flight> listOfFlights;
+    ArrayList<hotel> listOfHotels;
     ArrayList<tickets> listOfTickets = new ArrayList<>();
     
     
-    public ImplemServer(ArrayList<flight> listOfFlight) throws RemoteException {
+    public ImplemServer(ArrayList<flight> listOfFlights, ArrayList<hotel> listOfHotels) 
+            throws RemoteException {
         super();
-        this.listOfFlight = listOfFlight;
+        this.listOfFlights = listOfFlights;
+        this.listOfHotels = listOfHotels;
     }
-
-//    @Override
-//    public void chamar(String nome, InterCli interCli) throws RemoteException {
-//        interCli.echo("Olá " + nome) ;
-//    }
     
     @Override
     public void queryAirTickets(InterCli interCli) throws RemoteException {
         interCli.echo("Air Flights:");
-        Iterator<flight> itr = listOfFlight.iterator();
+        Iterator<flight> itr = listOfFlights.iterator();
         int count = 0;
         while (itr.hasNext()) {
             flight elem = itr.next();
@@ -41,8 +39,6 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
                          " Destination: " + elem.getDestination() +
                          " Price: " + elem.getPrice();
             interCli.echo(aux);
-            
-            //System.out.println(listOfFlight.get(count).getFrom());
             count++;
         }
     }
@@ -59,8 +55,25 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
         
         listOfTickets.add(tick);
         interCli.echo("Ticket has been processed");
+        interCli.echo(tick.toStr());
     }
     
+    @Override
+    public void queryAccommodation(InterCli interCli) throws RemoteException {
+        Iterator<hotel> itr = listOfHotels.iterator();
+        int count = 0;
+        while (itr.hasNext()) {
+            hotel elem = itr.next();
+            String aux = "Index: " + count +
+                         " Name: " + elem.getName() +
+                         " City: " + elem.getCity() +
+                         " Price: " + elem.getPrice();
+            interCli.echo(aux);
+            count++;
+        }
+    }
+    
+    @Override
     public void buyAccommodation(InterCli interCli, String destination,
                                 String beginDate, String endDate, int numberPerson,
                                 int age[], credicard card, int parts) 

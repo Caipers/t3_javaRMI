@@ -28,4 +28,8 @@ public class credicard {
         this.dateValid = dateValid;
         this.secretNumber = secretNumber;
     }
+    
+    public int getNumber() {
+        return number;
+    }
 }
