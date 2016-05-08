@@ -12,12 +12,14 @@ package RMI;
 public class event {
     private InterCli    IC;
     private int         eventCode;
+    private int         index;
     private String      endDate;
     
     
-    public event(InterCli IC, int eventCode, String endDate) {
+    public event(InterCli IC, int eventCode, int index, String endDate) {
         this.IC         = IC;
         this.eventCode  = eventCode;
+        this.index      = index;
         this.endDate    = endDate;
     }
     
@@ -33,12 +35,17 @@ public class event {
         return endDate;
     }
     
+    public int getIndex() {
+        return index;
+    }
+    
     @Override
     public String toString() {
         String aux;
-        aux = "InterCli: "      + IC.toString() + 
-              " Event Code: "    + eventCode + 
-              " End Date: "      + endDate;
+        aux = "InterCli: "       + IC.toString() + 
+              " Event Code: "    + eventCode +
+              " Index: "         + index +
+              " End Date: "      + endDate + "\n";
         
         return aux;
     }

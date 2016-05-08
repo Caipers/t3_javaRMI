@@ -134,10 +134,10 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
      * @throws RemoteException
      */
     @Override
-    public void events(InterCli interCli, int codeEvent, String endDate) 
-                       throws RemoteException {
+    public void events(InterCli interCli, int event, int index, String endDate) 
+                                throws RemoteException {
         
-        listOfEvents.add(new event(interCli, codeEvent, endDate));
+        listOfEvents.add(new event(interCli, event, index, endDate));
         interCli.echo("Event has been recorded!");
     }
 }

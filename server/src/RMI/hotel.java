@@ -30,6 +30,16 @@ public class hotel {
         this.price = price;
     }
     
+    public String toString() {
+        String aux;
+        aux = "Name: " + name +
+              " City: " + city + 
+              " Room Capacity: " + roomCapacity +
+              " Room Available: " + roomAvailable + 
+              " Price: " + price + "\n";
+              
+        return aux;
+    }
     // return 0 to OK
     // return 1 to error
     public int booking(int number) {

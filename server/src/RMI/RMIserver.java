@@ -151,8 +151,8 @@ public class RMIserver {
                         
                         for(int i = 0; i < count; i++) {
                             event ev = SI.listOfEvents.get(i);
-                            if (ev.getEventCode() == 3) {
-                                ev.getInterCli().echo("Price has changed!");
+                            if (ev.getEventCode() == 3 && ev.getIndex() == index) {
+                                ev.getInterCli().echo("Flight price has changed!");
                                 ev.getInterCli().echo(listOfFlights.get(index).toString());
                             }
                         }
@@ -192,8 +192,8 @@ public class RMIserver {
                         
                         for(int i = 0; i < count; i++) {
                             event ev = SI.listOfEvents.get(i);
-                            if (ev.getEventCode() == 4) {
-                                ev.getInterCli().echo("Price has changed!");
+                            if (ev.getEventCode() == 4 && ev.getIndex() == index) {
+                                ev.getInterCli().echo("Hotel price has changed!");
                                 ev.getInterCli().echo(listOfHotels.get(index).toString());
                             }
                         }
@@ -229,7 +229,7 @@ public class RMIserver {
                         
                         for(int i = 0; i < count; i++) {
                             event ev = SI.listOfEvents.get(i);
-                            if (ev.getEventCode() == 5) {
+                            if (ev.getEventCode() == 5 && ev.getIndex() == index) {
                                 ev.getInterCli().echo("Flight has become available!");
                                 ev.getInterCli().echo(fl.toString());
                             }
@@ -263,7 +263,7 @@ public class RMIserver {
                         
                         for(int i = 0; i < count; i++) {
                             event ev = SI.listOfEvents.get(i);
-                            if (ev.getEventCode() == 6) {
+                            if (ev.getEventCode() == 6 && ev.getIndex() == index) {
                                 ev.getInterCli().echo("Hotel has become available!");
                                 ev.getInterCli().echo(listOfHotels.get(index).toString());
                             }

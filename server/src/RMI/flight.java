@@ -96,7 +96,7 @@ public class flight {
               " Destination: " + destination +
               " Price: " + price +
               " Max Capacity: " + maxCapacity +
-              " Seats Available: " + seatsAvailable;
+              " Seats Available: " + seatsAvailable + "\n";
         
         return aux;
     }

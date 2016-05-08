@@ -52,7 +52,7 @@ public class tickets {
         aux += "]";
         
         aux += " Card: " + card.getNumber() + 
-               " Parts: " + parts;
+               " Parts: " + parts + "\n";
         return aux;
     }
 }
