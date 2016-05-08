@@ -43,6 +43,7 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                 System.out.println("[2] to buy Air Tickets");
                 System.out.println("[3] to query Hotel accommodation");
                 System.out.println("[4] to buy Hotel accommodation");
+                System.out.println("[5] to register an event");
                 cmd = in.nextLine().trim();
                 
                 switch (cmd) {
@@ -180,6 +181,28 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                                            secretNumber, parts);
                         
                         break;
+                        
+                    case "5":
+                        System.out.println("Press:");
+                        System.out.println("[1] to New Flights");
+                        System.out.println("[2] to New Hotels");
+                        System.out.println("[3] to Cheaper Flights");
+                        System.out.println("[4] to Cheaper Hotels");
+                        System.out.println("[5] to Flight Availability");
+                        System.out.println("[6] to Hotel Availability");
+                        cmd = in.nextLine().trim();
+                        
+                        System.out.println("Inform the end date of interest");
+                        endDate = in.nextLine().trim();
+                        
+                        IF.events(this, Integer.parseInt(cmd), endDate);
+                        
+                        
+                        break;
+                        
+                        
+                    default:
+                        System.out.println("Invalid operation! Try again...");
                     
                 }
                 

@@ -36,7 +36,7 @@ public class tickets {
         this.parts = parts;
     }
     
-    public String toStr() {
+    public String toString() {
         String aux;
         aux =  "Code: " + code + 
                " Type: " + type + 

@@ -3,3 +3,8 @@ Colocar controle de vagas nos voos (quantidade disponivel).
 
 Fazer testes com mais de um cliente ao mesmo tempo.
 
+Client:
+java -jar "/home/samuel/Dropbox/Faculdade/IF67C - Sistemas Distribuidos/T3-JavaRMI/client/dist/client.jar"
+
+Server:
+java -jar "/ho/samuel/Dropbox/Faculdade/IF67C - Sistemas Distribuidos/T3-JavaRMI/server/dist/server.jar"

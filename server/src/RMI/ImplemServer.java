@@ -17,8 +17,9 @@ import java.util.Iterator;
 public class ImplemServer extends UnicastRemoteObject implements InterServer {
     ArrayList<flight> listOfFlights;
     ArrayList<hotel> listOfHotels;
-    ArrayList<tickets> listOfTickets = new ArrayList<>();
-    ArrayList<accommodation> listOfAccommodation = new ArrayList<>();
+    ArrayList<tickets> listOfTickets                = new ArrayList<>();
+    ArrayList<accommodation> listOfAccommodation    = new ArrayList<>();
+    ArrayList<event> listOfEvents                   = new ArrayList<>();
     
     
     public ImplemServer(ArrayList<flight> listOfFlights, ArrayList<hotel> listOfHotels) 
@@ -56,15 +57,21 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
                               String dateValid, int secretNumber, int parts) 
                               throws RemoteException {
         
+        flight fl = listOfFlights.get(code);
+        int ret = fl.booking(numberOfPeople);
         
-        credicard card = new credicard(cardNumber, dateValid, secretNumber);
-        tickets tick = new tickets(code, type, from, departure,
+        if (ret == 1) {
+            interCli.echo("Seats not available at the moment");
+            interCli.echo("Request has not been processed!");
+        } else {
+            credicard card = new credicard(cardNumber, dateValid, secretNumber);
+            tickets tick = new tickets(code, type, from, departure,
                                  beginDate, endDate, numberOfPeople,
                                  age, card, parts);
-        
-        listOfTickets.add(tick);
-        interCli.echo("Ticket has been processed");
-        interCli.echo(tick.toStr());
+            listOfTickets.add(tick);
+            interCli.echo("Ticket has been processed!");
+            interCli.echo(tick.toString());
+        }
     }
     
     @Override
@@ -82,6 +89,21 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
         }
     }
     
+    /**
+     *
+     * @param interCli
+     * @param code
+     * @param destination
+     * @param beginDate
+     * @param endDate
+     * @param numberPerson
+     * @param age
+     * @param cardNumber
+     * @param dateValid
+     * @param secretNumber
+     * @param parts
+     * @throws RemoteException
+     */
     @Override
     public synchronized void buyAccommodation(InterCli interCli, int code, String destination,
                                 String beginDate, String endDate, int numberPerson,
@@ -89,14 +111,33 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
                                 int secretNumber, int parts) 
                                 throws RemoteException {
         
-        credicard card = new credicard(cardNumber, dateValid, secretNumber);
-        
-        accommodation acc = new accommodation(listOfHotels.get(code), beginDate,
+        hotel ho = listOfHotels.get(code);
+        int ret = ho.booking(numberPerson);
+        if (ret == 1) {
+            interCli.echo("Room(s) not available at the moment");
+            interCli.echo("Request has not been processed!");
+        } else {
+            credicard card = new credicard(cardNumber, dateValid, secretNumber);
+            accommodation acc = new accommodation(ho, beginDate,
                 endDate, numberPerson, age, card, parts);
+            listOfAccommodation.add(acc);
+            interCli.echo("Accommodation book has been processed");
+            interCli.echo(acc.toString());
+        }
+    }
+    
+    /**
+     *
+     * @param interCli
+     * @param codeEvent
+     * @param endDate
+     * @throws RemoteException
+     */
+    @Override
+    public void events(InterCli interCli, int codeEvent, String endDate) 
+                       throws RemoteException {
         
-        listOfAccommodation.add(acc);
-        interCli.echo("Accommodation book has been processed");
-        interCli.echo(acc.toStr());
-        
+        listOfEvents.add(new event(interCli, codeEvent, endDate));
+        interCli.echo("Event has been recorded!");
     }
 }

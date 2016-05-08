@@ -31,7 +31,8 @@ public class accommodation {
         this.parts = parts;
     }
     
-    public String toStr() {
+    @Override
+    public String toString() {
         String aux;
         
         aux = "Hotel's name: " + Hotel.getName() + 

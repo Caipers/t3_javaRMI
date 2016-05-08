@@ -32,8 +32,8 @@ public class hotel {
     
     // return 0 to OK
     // return 1 to error
-    public int rent(int number) {
-        if (number > roomAvailable) {
+    public int booking(int number) {
+        if (number < roomAvailable) {
             roomAvailable -= number;
             return 0;
         } else {

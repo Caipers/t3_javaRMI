@@ -26,4 +26,6 @@ public interface InterServer extends Remote {
                                 int age[], int cardNumber, String dateValid, 
                                 int secretNumber, int parts) 
                                 throws RemoteException;
+    public void events(InterCli interCli, int event, String endDate) 
+                                throws RemoteException;
 }
