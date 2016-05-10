@@ -1,14 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RMI;
 
-/**
- *
- * @author root
- */
 public class tickets {
     private int code;
     private int type;
@@ -38,7 +29,7 @@ public class tickets {
     
     public String toString() {
         String aux;
-        aux =  "Code: " + code + 
+        aux =  "\nCode: " + code + 
                " Type: " + type + 
                " From: " + from + 
                " Departure: " + depature + 

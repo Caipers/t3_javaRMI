@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RMI;
 
 import java.rmi.AccessException;
@@ -14,6 +9,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -26,24 +25,15 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
         InterServer IF;
         try {
             IF = (InterServer) refSN.lookup("ImplemServer");
-            /* 
-            COMMANDS:
-            queryAirTickets()
-            buyAirTickets()
-            queryAccommodation()
-            rentAccommodation()
-            TODO Records...
-            
-            */
+
             String cmd;
             while (true) {
-                System.out.println("");
-                System.out.println("Press:");
+                System.out.println("\nPress:");
                 System.out.println("[1] to query Air Tickets");
                 System.out.println("[2] to buy Air Tickets");
                 System.out.println("[3] to query Hotel accommodation");
                 System.out.println("[4] to buy Hotel accommodation");
-                System.out.println("[5] to register an event");
+                System.out.println("[5] to register an event\n");
                 cmd = in.nextLine().trim();
                 
                 switch (cmd) {
@@ -65,111 +55,106 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                         String endDate;
                         String dateValid;
                         
-                        System.out.println("List of flights:");
+                        System.out.println("\nList of flights:");
                         IF.queryAirTickets(this);
                         
-                        System.out.println("Please press the code of the flight:");
+                        System.out.println("\nPlease press the code of the flight:");
                         code = Integer.parseInt(in.nextLine().trim());
                                           
-                        System.out.println("Press 1 to One-Way Ticket or " + 
+                        System.out.println("\nPress 1 to One-Way Ticket or " + 
                                            "2 to Two-Way Ticket");
                         type = Integer.parseInt(in.nextLine().trim());
                         
-                        System.out.println("Inform from:");
+                        System.out.println("\nInform from:");
                         from = in.nextLine().trim();
                         
-                        System.out.println("Inform destination:");
+                        System.out.println("\nInform destination:");
                         destination = in.nextLine().trim();
                         
-                        System.out.println("Date of parture:");
+                        System.out.println("\nDate of parture:");
                         beginDate = in.nextLine().trim();
                         
-                        System.out.println("Date of return:");
+                        System.out.println("\nDate of return:");
                         endDate = in.nextLine().trim();
                         
-                        System.out.println("Inform the number of tickets:");
+                        System.out.println("\nInform the number of tickets:");
                         numberPerson = Integer.parseInt(in.nextLine().trim());
                         
                         age = new int[numberPerson];
                         for(int i = 0; i < numberPerson; i++) {
-                            System.out.println("Inform the age of client #" + i);
+                            System.out.println("\nInform the age of client #" + i);
                             age[i] = Integer.parseInt(in.nextLine().trim());
                         }
                         
-                        System.out.println("Inform the credicard information:");
+                        System.out.println("\nInform the credicard information:");
                         System.out.println("Credicard number:");
                         cardNumber = Integer.parseInt(in.nextLine().trim());
                         
-                        System.out.println("Validity:");
+                        System.out.println("\nValidity:");
                         dateValid = in.nextLine().trim();
                         
-                        System.out.println("Inform the secret number:");
+                        System.out.println("\nInform the secret number:");
                         secretNumber = Integer.parseInt(in.nextLine().trim());
                         
-                        System.out.println("Inform how many months of paying:");
+                        System.out.println("\nInform how many months of paying:");
                         parts = Integer.parseInt(in.nextLine().trim());
                         
                         IF.buyAirTickets(this, code, type, from, destination,
                                            beginDate, endDate, numberPerson,
                                            age, cardNumber, dateValid, 
                                            secretNumber, parts);
-                        
                         break;
+
                     case "3":
                         IF.queryAccommodation(this);
-                        
                         break;
-                        
+
                     case "4":
-                        System.out.println("List of Hotels:");
+                        System.out.println("\nList of Hotels:");
                         IF.queryAccommodation(this);
                         
-                        System.out.println("Please press the code of the Hotel:");
+                        System.out.println("\nPlease press the code of the Hotel:");
                         code = Integer.parseInt(in.nextLine().trim());
                         
-                        System.out.println("Inform destination (Hotel or City)");
+                        System.out.println("\nInform destination (Hotel or City)");
                         destination = in.nextLine().trim();
                         
-                        System.out.println("Start date:");
+                        System.out.println("\nStart date:");
                         beginDate = in.nextLine().trim();
                         
-                        System.out.println("Final date:");
+                        System.out.println("\nFinal date:");
                         endDate = in.nextLine().trim();
                         
-                        System.out.println("Inform number of rooms:");
+                        System.out.println("\nInform number of rooms:");
                         numberPerson = Integer.parseInt(in.nextLine().trim());
                         
                         age = new int[numberPerson];
                         for(int i = 0; i < numberPerson; i++) {
-                            System.out.println("Inform the age of client #" + i);
+                            System.out.println("\nInform the age of client #" + i);
                             age[i] = Integer.parseInt(in.nextLine().trim());
                         }
                         
-                        System.out.println("Inform the credicard information:");
+                        System.out.println("\nInform the credicard information:");
                         System.out.println("Credicard number:");
                         cardNumber = Integer.parseInt(in.nextLine().trim());
                         
-                        System.out.println("Validity:");
+                        System.out.println("\nValidity:");
                         dateValid = in.nextLine().trim();
                         
-                        System.out.println("Inform the secret number:");
+                        System.out.println("\nInform the secret number:");
                         secretNumber = Integer.parseInt(in.nextLine().trim());
                         
-                        System.out.println("Inform how many months of paying:");
+                        System.out.println("\nInform how many months of paying:");
                         parts = Integer.parseInt(in.nextLine().trim());
-                        
-                        //card = new credicard(cardNumber, dateValid, secretNumber);
                         
                         IF.buyAccommodation(this, code, destination,
                                            beginDate, endDate, numberPerson,
                                            age, cardNumber, dateValid, 
                                            secretNumber, parts);
-                        
                         break;
                         
                     case "5":
-                        System.out.println("");
-                        System.out.println("Press:");
+                        System.out.println("\nPress:");
                         System.out.println("[1] to New Flights");
                         System.out.println("[2] to New Hotels");
                         System.out.println("[3] to change of Flight's prices");
@@ -184,53 +169,40 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
                             break;
                         }
                         
-                        System.out.println("Inform the end date of interest");
+                        System.out.println("\nInform the end date of interest");
                         endDate = in.nextLine().trim();
                         if (cmd.equals("1") || cmd.equals("2")) {
                             IF.events(this, int_cmd, 0, endDate);
                         } else if (cmd.equals("3") || cmd.equals("5")) {
                             IF.queryAirTickets(this);
                             
-                            System.out.println("Inform the code of Flight");
+                            System.out.println("\nInform the code of Flight");
                             code = Integer.parseInt(in.nextLine().trim());
                             
                             IF.events(this, int_cmd, code, endDate);
                         } else if (cmd.equals("4") || cmd.equals("6")) {
                             IF.queryAccommodation(this);
                             
-                            System.out.println("Inform the code of Hotel");
+                            System.out.println("\nInform the code of Hotel");
                             code = Integer.parseInt(in.nextLine().trim());
                             IF.events(this, int_cmd, code, endDate);
                         }
                         break;
+
                     default:
-                        System.out.println("Invalid operation! Try again...");
+                        System.out.println("\nInvalid operation! Try again...");
                     
                 }
-                
             }
-               
         } catch (NotBoundException ex) {
             Logger.getLogger(ImplemCli.class.getName()).log(Level.SEVERE, null, ex);
         } catch (AccessException ex) {
             Logger.getLogger(ImplemCli.class.getName()).log(Level.SEVERE, null, ex);
         }
-     
     }
-    
-    /*
-     Criar a classe servente do cliente - ImplemCli - que implementa a interface
-     InterCli.
-     Quando um servidor invocar o método echo(), o cliente apenas mostrará a 
-     string recebida na tela. Nessa classe o cliente deve ter a referência do 
-     servidor e com esta ele poderá chamar o método chamar() do servidor e 
-     passará seu nome e sua referência (estando em ImplemCli, basta passar this);
-     */
     
     @Override
     public void echo(String str) throws RemoteException {
         System.out.println(str);
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
 }

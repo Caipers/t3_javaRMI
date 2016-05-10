@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RMI;
 
 import java.rmi.RemoteException;
@@ -21,7 +16,6 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
     ArrayList<accommodation> listOfAccommodation    = new ArrayList<>();
     ArrayList<event> listOfEvents                   = new ArrayList<>();
     
-    
     public ImplemServer(ArrayList<flight> listOfFlights, ArrayList<hotel> listOfHotels) 
             throws RemoteException {
         super();
@@ -36,7 +30,7 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
      */
     @Override
     public void queryAirTickets(InterCli interCli) throws RemoteException {
-        interCli.echo("Air Flights:");
+        interCli.echo("\nAir Flights:");
         Iterator<flight> itr = listOfFlights.iterator();
         int count = 0;
         while (itr.hasNext()) {
@@ -69,13 +63,15 @@ public class ImplemServer extends UnicastRemoteObject implements InterServer {
                                  beginDate, endDate, numberOfPeople,
                                  age, card, parts);
             listOfTickets.add(tick);
-            interCli.echo("Ticket has been processed!");
+            interCli.echo("\nTicket has been processed!");
             interCli.echo(tick.toString());
         }
     }
     
     @Override
     public void queryAccommodation(InterCli interCli) throws RemoteException {
+        interCli.echo("\nHotels:");
+        
         Iterator<hotel> itr = listOfHotels.iterator();
         int count = 0;
         while (itr.hasNext()) {

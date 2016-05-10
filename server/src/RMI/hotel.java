@@ -1,20 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package RMI;
 
-/**
- *
- * @author root
- *  2) Hotel
- *    Methods:
- *        Constructor (Nome, Cidade, Numero de Quartos, Preco)
- *        rent(number);
- *        free(number);
- *        setPrice(Price);
- */
 public class hotel {
     private String name;
     private String city;
