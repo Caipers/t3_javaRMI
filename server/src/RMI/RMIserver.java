@@ -22,8 +22,13 @@ public class RMIserver {
         
         init();
         try {
-            Registry SN = LocateRegistry.createRegistry(9099);
+            // Creates and exports a Registry instance on the local host that 
+            // accepts requests on the 9099 port.
+            Registry SN = LocateRegistry.createRegistry(9099);            
             ImplemServer SI = new ImplemServer(listOfFlights, listOfHotels);
+            
+            // Replaces the binding for the specified name in this registry
+            // with the supplied remote reference.
             SN.rebind("ImplemServer", SI);
             
             String cmd;

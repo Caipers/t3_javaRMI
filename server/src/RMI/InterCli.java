@@ -4,7 +4,6 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
- *
  * @author samuel
  */
 public interface InterCli extends Remote {

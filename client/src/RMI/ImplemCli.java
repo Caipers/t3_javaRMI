@@ -5,14 +5,9 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  *
@@ -24,6 +19,8 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
     public ImplemCli(Registry refSN) throws RemoteException, NotBoundException {
         InterServer IF;
         try {
+
+            // InterServer's reference
             IF = (InterServer) refSN.lookup("ImplemServer");
 
             String cmd;
@@ -201,6 +198,7 @@ public class ImplemCli extends UnicastRemoteObject implements InterCli {
         }
     }
     
+    // echo function used for server.
     @Override
     public void echo(String str) throws RemoteException {
         System.out.println(str);
